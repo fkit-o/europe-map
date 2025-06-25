@@ -13,6 +13,18 @@
       height: 600px;
       width: 100%;
     }
+    .popup-content {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .popup-content a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .popup-content a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -21,7 +33,7 @@
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([50, 10], 4); // Europe center
+    const map = L.map('map').setView([50, 10], 4); // Centre Europe
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap',
@@ -31,25 +43,33 @@
       {
         nom: "Festival Musique Paris, 13 juin",
         lat: 48.8566,
-        lon: 2.3522
+        lon: 2.3522,
+        url: "https://tonsite.com/evenements/festival-musique-paris"
       },
       {
-        nom: "Expo Berlin rome 14 juillet",
+        nom: "Expo Berlin, 14 juillet",
         lat: 52.52,
-        lon: 13.405
+        lon: 13.405,
+        url: "https://tonsite.com/evenements/expo-berlin"
       },
       {
-        nom: "Salon Rome 8 aout",
+        nom: "Salon Rome, 8 août",
         lat: 41.9028,
-        lon: 12.4964
+        lon: 12.4964,
+        url: "https://tonsite.com/evenements/salon-rome"
       }
     ];
 
-    // 📌 Ajouter les marqueurs
     events.forEach(e => {
+      const popupHtml = `
+        <div class="popup-content">
+          <strong>${e.nom}</strong><br/>
+          <a href="${e.url}" target="_blank" rel="noopener noreferrer">Voir l'événement</a>
+        </div>
+      `;
       L.marker([e.lat, e.lon])
         .addTo(map)
-        .bindPopup(`<b>${e.nom}</b>`);
+        .bindPopup(popupHtml);
     });
   </script>
 </body>
