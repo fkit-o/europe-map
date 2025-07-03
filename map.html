@@ -78,13 +78,16 @@
       center: [50, 10],
       zoom: 4,
       minZoom: 3, // empêche de trop dézoomer
-      maxZoom: 15 // empêche de trop zoomer
+      maxZoom: 6 // empêche de trop zoomer
     });
 
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap',
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://carto.com/">CARTO</a> contributors',
+      subdomains: 'abcd',
+      maxZoom: 19
     }).addTo(map);
+
 
     const events = [
       {
