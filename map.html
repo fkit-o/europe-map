@@ -74,21 +74,22 @@
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
+    map.createPane('labels');
+    map.getPane('labels').style.zIndex = 650;
     const map = L.map('map', {
       center: [50, 10],
       zoom: 4,
       minZoom: 3, // empêche de trop dézoomer
-      maxZoom: 8 // empêche de trop zoomer
+      maxZoom: 8, // empêche de trop zoomer
+      pane: 'labels'
     });
 
-    map.createPane('labels');
-    map.getPane('labels').style.zIndex = 650;
+
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 19,
-    pane: 'labels'
   }).addTo(map);
     
 
