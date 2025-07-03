@@ -81,7 +81,8 @@
       maxZoom: 8 // empêche de trop zoomer
     });
 
-    
+    map.createPane('labels');
+    map.getPane('labels').style.zIndex = 650;
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
@@ -89,8 +90,7 @@
     maxZoom: 19,
     pane: 'labels'
   }).addTo(map);
-    map.createPane('labels');
-    map.getPane('labels').style.zIndex = 650;
+    
 
     const events = [
       {
