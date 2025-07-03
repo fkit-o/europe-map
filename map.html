@@ -74,7 +74,13 @@
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([50, 10], 4); // Europe center
+    const map = L.map('map', {
+      center: [50, 10],
+      zoom: 4,
+      minZoom: 3, // empêche de trop dézoomer
+      maxZoom: 10 // empêche de trop zoomer
+    });
+
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap',
